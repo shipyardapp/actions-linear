@@ -1,0 +1,19 @@
+{
+  "name": "linear-utils",
+  "version": "0.0.0",
+  "description": "Utilities and Actions for working with Linear",
+  "main": "index.js",
+  "repository": "git@github.com:shipyardapp/linear-utils.git",
+  "author": "Eric Elsken <eric.elsken@shipyardapp.com>",
+  "license": "NONE",
+  "private": true,
+  "dependencies": {
+    "@linear/sdk": "^13.0.0",
+    "yargs": "yargs/yargs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
