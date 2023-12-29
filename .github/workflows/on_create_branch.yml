@@ -1,0 +1,19 @@
+on:
+  workflow_call:
+    inputs:
+      branch_name:
+        type: string
+        required: true
+
+jobs:
+  on_create_branch:
+    name: On Create Branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+      - run: echo Hello Create Branch ${{ inputs.branch_name }}
+      - run: echo about done
