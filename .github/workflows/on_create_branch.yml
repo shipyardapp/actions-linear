@@ -11,4 +11,4 @@ jobs:
         with:
           command: on-create-branch
           on_create_branch: 'new-branch-2'
-          secrets: 'inherit'
+        secrets: 'inherit'
