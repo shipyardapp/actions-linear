@@ -155,6 +155,7 @@ interface Arguments {
 }
 
 let argv = [...process.argv];
+console.log('hello from linear-utils.ts', 'initial args', argv);
 if (github.context.job) {
 	argv.push(
 		core.getInput('command'),
