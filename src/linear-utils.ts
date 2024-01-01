@@ -17,6 +17,7 @@ const LinearFetch = Promise;
 
 function newLinearClient(): LinearClient {
 	const params: any = {};
+	console.log('using linear api key', process.env.LINEAR_API_KEY);
 	const apiKey = process.env.LINEAR_API_KEY;
 	if (!!apiKey) {
 		params.apiKey = apiKey;
