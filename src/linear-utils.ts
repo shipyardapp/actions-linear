@@ -17,7 +17,6 @@ const LinearFetch = Promise;
 
 function newLinearClient(): LinearClient {
 	const params: any = {};
-	console.log('using linear api key', process.env.LINEAR_API_KEY);
 	const apiKey = process.env.LINEAR_API_KEY;
 	if (!!apiKey) {
 		params.apiKey = apiKey;
@@ -112,14 +111,12 @@ function collectAssigneeIssueIdentifierFromBranchName(
 
 	if (gitBranchFormat === '{username}/{issueIdentifier}-{issueTitle}') {
 		const slashParts = branch.split('/');
-		console.log('slashParts', slashParts);
 		if (slashParts.length !== 2) {
 			throw new Error('IncompatibleBranchFormat');
 		}
 		assignee = slashParts[0];
 
 		const idTitleParts = slashParts[1].split('-');
-		console.log('idTitleParts', idTitleParts);
 		if (idTitleParts.length < 2) {
 			throw new Error('IncompatibleBranchFormat');
 		}
@@ -156,14 +153,12 @@ interface Arguments {
 }
 
 let argv = [...process.argv];
-console.log('hello from linear-utils.ts', 'initial args', argv);
 if (github.context.job) {
 	argv.push(
 		core.getInput('command'),
 		core.getInput('on_create_branch'),
 	);
 }
-console.log('real args', argv);
 
 const args = yargs(hideBin(argv))
 	.command('on-create-branch <branch>', 'Set Linear Issue Assignee and Status for a branch', yargs => {
