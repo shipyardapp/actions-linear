@@ -164,6 +164,7 @@ const args = yargs(hideBin(process.argv))
 		);
 	})
 	.strictCommands(true)
+	.demandCommand(1, 'Provide a command')
 	.help()
 	.argv;
 
