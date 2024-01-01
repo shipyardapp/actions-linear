@@ -8,6 +8,8 @@ import {
 	Organization,
 	User,
 } from '@linear/sdk';
+import * as core from '@actions/core';
+import * as github from '@actions/github';
 
 // Set so there is a Promise compatible constructor for TypeScript to latch onto.
 // So we can use LinearFetch<T> in async return types.
@@ -152,7 +154,15 @@ interface Arguments {
 	branchName?: string;
 }
 
-const args = yargs(hideBin(process.argv))
+let argv = [...process.argv];
+if (github.context.job) {
+	argv.push(
+		core.getInput('command'),
+		core.getInput('on_create_branch'),
+	);
+}
+
+const args = yargs(hideBin(argv))
 	.command('on-create-branch <branch>', 'Set Linear Issue Assignee and Status for a branch', yargs => {
 		return yargs.positional(
 			'branch',
