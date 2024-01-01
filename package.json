@@ -1,18 +1,23 @@
 {
-  "name": "linear-utils",
+  "name": "actions-linear",
   "version": "0.0.0",
-  "description": "Utilities and Actions for working with Linear",
-  "main": "index.js",
-  "repository": "git@github.com:shipyardapp/linear-utils.git",
-  "author": "Eric Elsken <eric.elsken@shipyardapp.com>",
+  "description": "Actions and Utilities for working with Linear",
+  "main": "dist/index.js",
+  "repository": "git@github.com:shipyardapp/actions-linear.git",
+  "author": "Shipyard Engineering <tech@shipyardapp.com>",
   "license": "NONE",
   "private": true,
+  "scripts": {
+    "build": "ncc build --minify src/linear-utils.ts"
+  },
   "dependencies": {
     "@linear/sdk": "^13.0.0",
-    "yargs": "yargs/yargs"
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
+    "@types/yargs": "^17.0.32",
+    "@vercel/ncc": "^0.38.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }

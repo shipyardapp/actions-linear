@@ -1,0 +1,16 @@
+name: 'Shipyard Linear Action'
+description: 'Execute Linear automations from GitHub Actions.'
+
+inputs:
+  command:
+    type: string
+    description: 'Name of subcommand to execute.'
+    required: true
+  on_create_branch:
+    type: string
+    description: 'Branch for on_create_branch command.'
+    required: false
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
