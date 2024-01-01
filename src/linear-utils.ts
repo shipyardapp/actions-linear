@@ -162,6 +162,7 @@ if (github.context.job) {
 		core.getInput('on_create_branch'),
 	);
 }
+console.log('real args', argv);
 
 const args = yargs(hideBin(argv))
 	.command('on-create-branch <branch>', 'Set Linear Issue Assignee and Status for a branch', yargs => {
