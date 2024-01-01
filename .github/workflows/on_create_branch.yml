@@ -11,4 +11,5 @@ jobs:
         with:
           command: on-create-branch
           on_create_branch: 'new-branch-2'
-        secrets: 'inherit'
+        env:
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
