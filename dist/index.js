@@ -30867,7 +30867,6 @@ const github = __importStar(__nccwpck_require__(5438));
 const LinearFetch = Promise;
 function newLinearClient() {
     const params = {};
-    console.log('using linear api key', process_1.default.env.LINEAR_API_KEY);
     const apiKey = process_1.default.env.LINEAR_API_KEY;
     if (!!apiKey) {
         params.apiKey = apiKey;
@@ -30958,13 +30957,11 @@ function collectAssigneeIssueIdentifierFromBranchName(org, branch) {
     let issueIdentifier = null;
     if (gitBranchFormat === '{username}/{issueIdentifier}-{issueTitle}') {
         const slashParts = branch.split('/');
-        console.log('slashParts', slashParts);
         if (slashParts.length !== 2) {
             throw new Error('IncompatibleBranchFormat');
         }
         assignee = slashParts[0];
         const idTitleParts = slashParts[1].split('-');
-        console.log('idTitleParts', idTitleParts);
         if (idTitleParts.length < 2) {
             throw new Error('IncompatibleBranchFormat');
         }
@@ -30993,11 +30990,9 @@ function main(args) {
     });
 }
 let argv = [...process_1.default.argv];
-console.log('hello from linear-utils.ts', 'initial args', argv);
 if (github.context.job) {
     argv.push(core.getInput('command'), core.getInput('on_create_branch'));
 }
-console.log('real args', argv);
 const args = (0, yargs_1.default)((0, helpers_1.hideBin)(argv))
     .command('on-create-branch <branch>', 'Set Linear Issue Assignee and Status for a branch', yargs => {
     return yargs.positional('branch', {
