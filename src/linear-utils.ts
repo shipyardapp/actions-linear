@@ -121,6 +121,13 @@ function collectAssigneeIssueIdentifierFromBranchName(
 			throw new Error('IncompatibleBranchFormat');
 		}
 		issueIdentifier = `${idTitleParts[0].toUpperCase()}-${idTitleParts[1]}`;
+	} else if (gitBranchFormat === '{issueIdentifier}/{username}/{issueTitle}') {
+		const slashParts = branch.split('/');
+		if (slashParts.length !== 3) {
+			throw new Error('IncompatibleBranchFormat');
+		}
+		issueIdentifier = `${slashParts[0].toUpperCase()}-${slashParts[2]}`;
+		assignee = slashParts[1];
 	} else {
 		throw new Error('IncompatibleBranchFormat');
 	}
